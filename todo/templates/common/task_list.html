@@ -1,0 +1,32 @@
+<!-- common/task_list.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Список завдань</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="index-col">#</th>
+                <th class="name-col">Назва</th>
+                <th class="date-col">Дата</th>
+                <th class="time-col">Час</th>
+                <th class="priority-col">Пріоритет</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td class="index-col">{{ forloop.counter }}</td>
+                <td class="name-col">{{ task.name }}</td>
+                <td class="date-col">{{ task.date }}</td>
+                <td class="time-col">{{ task.time }}</td>
+                <td class="priority-col">{{ task.priority }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'task_create' %}" class="btn btn-primary">Додати завдання</a>
+</div>
+{% endblock %}
